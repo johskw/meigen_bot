@@ -1,19 +1,17 @@
-package app
+package main
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/johskw/meigen_bot/handler"
 )
 
-func init() {
+func main() {
 	err := godotenv.Load("bot.env")
 	if err != nil {
 		panic(err)
 	}
 	r := gin.New()
 	r.POST("/callback", handler.CallbackHandler)
-	http.Handle("/", r)
+	r.Run(":8080")
 }
