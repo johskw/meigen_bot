@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/line/line-bot-sdk-go/linebot"
 	"google.golang.org/appengine"
@@ -16,13 +17,15 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
-	http.HandleFunc("/callback", callbackHandler)
+	r := gin.New()
+	r.POST("/callback", callbackHandler)
+	http.Handle("/", r)
 }
 
-func callbackHandler(w http.ResponseWriter, r *http.Request) {
-	ctx := appengine.NewContext(r)
+func callbackHandler(c *gin.Context) {
+	ctx := appengine.NewContext(c.Request)
 	bot, err := linebot.New(os.Getenv("LINE_BOT_CHANNEL_SECRET"), os.Getenv("LINE_BOT_CHANNEL_TOKEN"), linebot.WithHTTPClient(urlfetch.Client(ctx)))
-	events, err := bot.ParseRequest(r)
+	events, err := bot.ParseRequest(c.Request)
 	if err != nil {
 		log.Errorf(ctx, "Error: %v", err)
 	}
