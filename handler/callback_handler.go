@@ -1,28 +1,16 @@
-package app
+package handler
 
 import (
-	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 	"github.com/line/line-bot-sdk-go/linebot"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
 	"google.golang.org/appengine/urlfetch"
 )
 
-func init() {
-	err := godotenv.Load("bot.env")
-	if err != nil {
-		panic(err)
-	}
-	r := gin.New()
-	r.POST("/callback", callbackHandler)
-	http.Handle("/", r)
-}
-
-func callbackHandler(c *gin.Context) {
+func CallbackHandler(c *gin.Context) {
 	ctx := appengine.NewContext(c.Request)
 	bot, err := linebot.New(os.Getenv("LINE_BOT_CHANNEL_SECRET"), os.Getenv("LINE_BOT_CHANNEL_TOKEN"), linebot.WithHTTPClient(urlfetch.Client(ctx)))
 	events, err := bot.ParseRequest(c.Request)
