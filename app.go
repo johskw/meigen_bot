@@ -12,7 +12,7 @@ import (
 )
 
 func init() {
-	err := godotenv.Load("line.env")
+	err := godotenv.Load("bot.env")
 	if err != nil {
 		panic(err)
 	}
