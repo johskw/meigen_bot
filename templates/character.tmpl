@@ -9,10 +9,8 @@
       <a href="/">TOPへ</a>
       <h1>{{ .character.Name }}</h1>
       <h2>ニックネーム</h2>
-      <form action="/nickname/{{.character.ID}}" method="post">
-        <label for="name">
-          <input type="text" name="name" placeholder="新しいニックネーム">
-        </label>
+      <form action="/nicknames/{{.character.ID}}" method="post">
+        <input type="text" name="nickname" placeholder="新しいニックネーム">
         <input type="submit" value="追加">
       </form>
       <table>
@@ -26,12 +24,20 @@
         </tbody>
       </table>
       <h2>名言</h2>
-      <form action="" method="post">
-        <label for="name">
-          <textarea name="name" placeholder="新しい名言"></textarea>
-        </label>
+      <form action="/meigens/{{.character.ID}}" method="post">
+        <textarea name="text" placeholder="新しい名言"></textarea>
         <input type="submit" value="追加">
       </form>
+      <table>
+        <tbody>
+        {{ range .character.Meigens }}
+          <tr>
+            <td>{{ .Text }}</td>
+            <td><a href="">削除</a></td>
+          </tr>
+        {{ end }}
+        </tbody>
+      </table>
     </div>
   </body>
 </html>

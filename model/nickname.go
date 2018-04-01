@@ -4,7 +4,7 @@ import "time"
 
 type Nickname struct {
 	ID          int
-	Nickname    string `form:"name" gorm:"index"`
+	Nickname    string `form:"nickname" gorm:"index"`
 	CharacterID int
 	CreatedAt   time.Time
 	UpdatedAt   time.Time
