@@ -18,3 +18,7 @@ func ShowIndexHandler(c *gin.Context) {
 		"characters": characters,
 	})
 }
+
+func ShowCharacterForm(c *gin.Context) {
+	c.HTML(http.StatusOK, "character_form.tmpl", nil)
+}

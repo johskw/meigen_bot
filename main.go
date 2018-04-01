@@ -15,6 +15,7 @@ func main() {
 
 	r.LoadHTMLGlob("templates/*.tmpl")
 	r.GET("/", handler.ShowIndexHandler)
+	r.GET("/characters/new", handler.ShowCharacterForm)
 
 	r.Run(":8080")
 }

@@ -5,11 +5,27 @@
     <title>名言BOT</title>
   </head>
   <body>
-    <h1>キャラクター一覧</h1>
-    <ul>
-      {{ range .characters }}
-        <li>{{ .Name }}</li>
-      {{ end }}
-    </ul>
+    <div>
+      <h1>キャラクタ一覧</h1>
+      <a href="/characters/new">新規キャラクター作成</a>
+      <table>
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        {{ range .characters }}
+          <tr>
+            <td>{{ .Name }}</td>
+            <td><a href="">詳細</a></td>
+            <td><a href="">削除</a></td>
+          </tr>
+        {{ end }}
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
