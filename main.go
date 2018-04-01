@@ -19,5 +19,7 @@ func main() {
 	r.GET("/newcharacter", handler.ShowCharacterForm)
 	r.POST("/characters", handler.PostCharacter)
 
+	r.POST("/nickname/:character_id", handler.PostNickname)
+
 	r.Run(":8080")
 }

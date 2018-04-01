@@ -8,17 +8,29 @@
     <div>
       <a href="/">TOPへ</a>
       <h1>{{ .character.Name }}</h1>
-      <form action="" method="post">
+      <h2>ニックネーム</h2>
+      <form action="/nickname/{{.character.ID}}" method="post">
         <label for="name">
-          <input type="text" name="name" placeholder="ニックネーム">
+          <input type="text" name="name" placeholder="新しいニックネーム">
         </label>
-        <input type="submit" value="作成">
+        <input type="submit" value="追加">
       </form>
+      <table>
+        <tbody>
+        {{ range .character.Nicknames }}
+          <tr>
+            <td>{{ .Nickname }}</td>
+            <td><a href="">削除</a></td>
+          </tr>
+        {{ end }}
+        </tbody>
+      </table>
+      <h2>名言</h2>
       <form action="" method="post">
         <label for="name">
-          <textarea name="name" placeholder="名言"></textarea>
+          <textarea name="name" placeholder="新しい名言"></textarea>
         </label>
-        <input type="submit" value="作成">
+        <input type="submit" value="追加">
       </form>
     </div>
   </body>

@@ -19,7 +19,7 @@ func GetAllCharacters() (characters []Character, err error) {
 }
 
 func GetCharacter(id int) (character Character, err error) {
-	err = db.First(&character, id).Error
+	err = db.First(&character, id).Related(&character.Nicknames).Error
 	return
 }
 
