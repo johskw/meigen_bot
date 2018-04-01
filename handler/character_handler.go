@@ -14,7 +14,15 @@ func PostCharacter(c *gin.Context) {
 	if err != nil {
 		log.Print(err)
 	}
-	_, err = character.Create()
+	character, err = character.Create()
+	if err != nil {
+		log.Print(err)
+	}
+	nickname := model.Nickname{
+		Nickname:    character.Name,
+		CharacterID: character.ID,
+	}
+	_, err = nickname.Create()
 	if err != nil {
 		log.Print(err)
 	}
