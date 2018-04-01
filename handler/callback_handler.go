@@ -12,7 +12,7 @@ import (
 
 func CallbackHandler(c *gin.Context) {
 	ctx := appengine.NewContext(c.Request)
-	bot, err := linebot.New(os.Getenv("LINE_BOT_CHANNEL_SECRET"), os.Getenv("LINE_BOT_CHANNEL_TOKEN"), linebot.WithHTTPClient(urlfetch.Client(ctx)))
+	bot, err := linebot.New(os.Getenv("MEIGEN_BOT_CHANNEL_SECRET"), os.Getenv("MEIGEN_BOT_CHANNEL_TOKEN"), linebot.WithHTTPClient(urlfetch.Client(ctx)))
 	events, err := bot.ParseRequest(c.Request)
 	if err != nil {
 		log.Errorf(ctx, "Error: %v", err)
