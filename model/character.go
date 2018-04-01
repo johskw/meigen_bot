@@ -6,7 +6,7 @@ import (
 
 type Character struct {
 	ID        int
-	Name      string
+	Name      string `form:"name"`
 	Nicknames []Nickname
 	Meigens   []Meigen
 	CreatedAt time.Time
@@ -16,4 +16,9 @@ type Character struct {
 func GetAllCharacters() (characters []Character, err error) {
 	err = db.Find(&characters).Error
 	return
+}
+
+func (character Character) Create() (Character, error) {
+	err := db.Create(&character).Error
+	return character, err
 }

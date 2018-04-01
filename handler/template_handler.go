@@ -12,7 +12,7 @@ import (
 func ShowIndexHandler(c *gin.Context) {
 	characters, err := model.GetAllCharacters()
 	if err != nil {
-		log.Println(err)
+		log.Print(err)
 	}
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
 		"characters": characters,
