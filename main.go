@@ -7,6 +7,14 @@ import (
 
 func main() {
 	r := gin.New()
+
+	r.Use(gin.Logger())
+	r.Use(gin.Recovery())
+
 	r.POST("/callback", handler.CallbackHandler)
+
+	r.LoadHTMLGlob("templates/*.tmpl")
+	r.GET("/", handler.ShowIndexHandler)
+
 	r.Run(":8080")
 }
