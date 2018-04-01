@@ -7,7 +7,7 @@
   <body>
     <div>
       <h1>キャラクタ一覧</h1>
-      <a href="/characters/new">新規キャラクター作成</a>
+      <a href="/newcharacter">新規キャラクター作成</a>
       <table>
         <thead>
           <tr>
@@ -20,7 +20,7 @@
         {{ range .characters }}
           <tr>
             <td>{{ .Name }}</td>
-            <td><a href="">詳細</a></td>
+            <td><a href="/characters/{{ .ID }}">詳細</a></td>
             <td><a href="">削除</a></td>
           </tr>
         {{ end }}

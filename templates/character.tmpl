@@ -1,0 +1,25 @@
+<html lang='ja'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>名言BOT</title>
+  </head>
+  <body>
+    <div>
+      <a href="/">TOPへ</a>
+      <h1>{{ .character.Name }}</h1>
+      <form action="" method="post">
+        <label for="name">
+          <input type="text" name="name" placeholder="ニックネーム">
+        </label>
+        <input type="submit" value="作成">
+      </form>
+      <form action="" method="post">
+        <label for="name">
+          <textarea name="name" placeholder="名言"></textarea>
+        </label>
+        <input type="submit" value="作成">
+      </form>
+    </div>
+  </body>
+</html>

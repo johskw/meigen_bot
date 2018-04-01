@@ -14,8 +14,9 @@ func main() {
 	r.POST("/callback", handler.CallbackHandler)
 
 	r.LoadHTMLGlob("templates/*.tmpl")
-	r.GET("/", handler.ShowIndexHandler)
-	r.GET("/characters/new", handler.ShowCharacterForm)
+	r.GET("/", handler.ShowIndex)
+	r.GET("/characters/:id", handler.ShowCharacter)
+	r.GET("/newcharacter", handler.ShowCharacterForm)
 	r.POST("/characters", handler.PostCharacter)
 
 	r.Run(":8080")

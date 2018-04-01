@@ -18,6 +18,11 @@ func GetAllCharacters() (characters []Character, err error) {
 	return
 }
 
+func GetCharacter(id int) (character Character, err error) {
+	err = db.First(&character, id).Error
+	return
+}
+
 func (character Character) Create() (Character, error) {
 	err := db.Create(&character).Error
 	return character, err

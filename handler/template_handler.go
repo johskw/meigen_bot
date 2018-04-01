@@ -3,13 +3,14 @@ package handler
 import (
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/johskw/meigen_bot/model"
 
 	"github.com/gin-gonic/gin"
 )
 
-func ShowIndexHandler(c *gin.Context) {
+func ShowIndex(c *gin.Context) {
 	characters, err := model.GetAllCharacters()
 	if err != nil {
 		log.Print(err)
@@ -21,4 +22,15 @@ func ShowIndexHandler(c *gin.Context) {
 
 func ShowCharacterForm(c *gin.Context) {
 	c.HTML(http.StatusOK, "character_form.tmpl", nil)
+}
+
+func ShowCharacter(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	character, err := model.GetCharacter(id)
+	if err != nil {
+		log.Print(err)
+	}
+	c.HTML(http.StatusOK, "character.tmpl", gin.H{
+		"character": character,
+	})
 }
