@@ -1,4 +1,4 @@
-{{ $name := .character.Name }}
+{{ $character := .character }}
 <html lang='ja'>
   <head>
     <meta charset='UTF-8'>
@@ -8,26 +8,28 @@
   <body>
     <div>
       <a href="/">TOPへ</a>
-      <h1>{{ $name }}</h1>
+      <h1>{{ $character.Name }}</h1>
       <h2>ニックネーム</h2>
-      <form action="/nicknames/{{.character.ID}}" method="post">
+      <form action="/createnickname/{{.character.ID}}" method="post">
         <input type="text" name="nickname" placeholder="新しいニックネーム">
         <input type="submit" value="追加">
       </form>
       <table>
-        {{ range .character.Nicknames }}
+        {{ range $character.Nicknames }}
           <tr>
             <td>{{ .Nickname }}</td>
             <td>
-              {{ if ne $name .Nickname }}
-                <a href="">削除</a>
+              {{ if ne $character.Name .Nickname }}
+                <form name="nickname{{ .ID }}" method="post" action="/deletenickname/{{ .ID }}/{{ $character.ID }}">
+                  <input type="submit" value="削除">
+               </form>
               {{ end }}
              </td>
           </tr>
         {{ end }}
       </table>
       <h2>名言</h2>
-      <form action="/meigens/{{.character.ID}}" method="post">
+      <form action="/createmeigen/{{.character.ID}}" method="post">
         <textarea name="text" placeholder="新しい名言"></textarea>
         <input type="submit" value="追加">
       </form>

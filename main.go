@@ -17,11 +17,12 @@ func main() {
 	r.GET("/", handler.ShowIndex)
 	r.GET("/characters/:id", handler.ShowCharacter)
 	r.GET("/newcharacter", handler.ShowCharacterForm)
-	r.POST("/characters", handler.PostCharacter)
+	r.POST("/createcharacter", handler.PostCharacter)
 
-	r.POST("/nicknames/:character_id", handler.PostNickname)
+	r.POST("/createnickname/:character_id", handler.PostNickname)
+	r.POST("/deletenickname/:nickname_id/:character_id", handler.DeleteNickname)
 
-	r.POST("/meigens/:character_id", handler.PostMeigen)
+	r.POST("/createmeigen/:character_id", handler.PostMeigen)
 
 	r.Run(":8080")
 }

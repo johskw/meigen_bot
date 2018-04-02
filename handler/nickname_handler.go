@@ -22,3 +22,12 @@ func PostNickname(c *gin.Context) {
 	}
 	c.Redirect(http.StatusMovedPermanently, "/characters/"+c.Param("character_id"))
 }
+
+func DeleteNickname(c *gin.Context) {
+	nicknameID, _ := strconv.Atoi(c.Param("nickname_id"))
+	err := model.DeteleNickname(nicknameID)
+	if err != nil {
+		log.Print(err)
+	}
+	c.Redirect(http.StatusMovedPermanently, "/characters/"+c.Param("character_id"))
+}

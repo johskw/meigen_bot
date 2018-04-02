@@ -14,3 +14,13 @@ func (nickname Nickname) Create() (Nickname, error) {
 	err := db.Create(&nickname).Error
 	return nickname, err
 }
+
+func DeteleNickname(id int) (err error) {
+	var nickname Nickname
+	err = db.First(&nickname, id).Error
+	if err != nil {
+		return
+	}
+	err = db.Delete(&nickname).Error
+	return
+}
