@@ -12,7 +12,7 @@ func init() {
 
 	r.POST("/callback", handler.CallbackHandler)
 
-	r.LoadHTMLGlob("../templates/*.tmpl")
+	r.LoadHTMLGlob("templates/*.tmpl")
 
 	r.GET("/", handler.ShowIndex)
 	r.GET("/character/:id", handler.ShowCharacter)
