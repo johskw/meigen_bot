@@ -10,7 +10,7 @@ import (
 func init() {
 	r := gin.New()
 
-	r.POST("/callback", handler.CallbackHandler)
+	r.POST("/callback", handler.Callback)
 
 	r.LoadHTMLGlob("templates/*.tmpl")
 

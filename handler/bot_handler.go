@@ -10,7 +10,7 @@ import (
 	"google.golang.org/appengine/urlfetch"
 )
 
-func CallbackHandler(c *gin.Context) {
+func Callback(c *gin.Context) {
 	ctx := appengine.NewContext(c.Request)
 	bot, err := linebot.New(os.Getenv("MEIGEN_BOT_CHANNEL_SECRET"), os.Getenv("MEIGEN_BOT_CHANNEL_TOKEN"), linebot.WithHTTPClient(urlfetch.Client(ctx)))
 	events, err := bot.ParseRequest(c.Request)

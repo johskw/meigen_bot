@@ -45,3 +45,7 @@ func ShowEditCharacterForm(c *gin.Context) {
 		"character": character,
 	})
 }
+
+func ShowChecker(c *gin.Context) {
+	c.HTML(http.StatusOK, "checker.tmpl", nil)
+}

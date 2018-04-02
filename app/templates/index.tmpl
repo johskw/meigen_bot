@@ -5,23 +5,22 @@
     <title>名言BOT</title>
   </head>
   <body>
-    <div>
-      <h1>キャラクタ一覧</h1>
-      <a href="/newcharacter">新規キャラクター作成</a>
-      <table>
-        {{ range .characters }}
-          <tr>
-            <td>{{ .Name }}</td>
-            <td><a href="/character/{{ .ID }}">詳細</a></td>
-            <td><a href="/editcharacter/{{ .ID }}">編集</a></td>
-            <td>
-              <form name="character{{ .ID }}" method="post" style="margin: 0;" action="/deletecharacter/{{ .ID }}">
-                <input type="submit" value="削除">
-              </form>
-            </td>
-          </tr>
-        {{ end }}
-      </table>
-    </div>
+    <h1>キャラクタ一覧</h1>
+    <a href="/checker">BOTチェッカー</a><br>
+    <a href="/newcharacter">新規キャラクター作成</a>
+    <table>
+      {{ range .characters }}
+        <tr>
+          <td>{{ .Name }}</td>
+          <td><a href="/character/{{ .ID }}">詳細</a></td>
+          <td><a href="/editcharacter/{{ .ID }}">編集</a></td>
+          <td>
+            <form name="character{{ .ID }}" method="post" style="margin: 0;" action="/deletecharacter/{{ .ID }}">
+              <input type="submit" value="削除">
+            </form>
+          </td>
+        </tr>
+      {{ end }}
+    </table>
   </body>
 </html>

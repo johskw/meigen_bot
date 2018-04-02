@@ -29,3 +29,8 @@ func DeteleNickname(id int) (err error) {
 	err = db.Delete(&nickname).Error
 	return
 }
+
+func GetNickname(text string) (nickname Nickname, err error) {
+	err = db.Where("nickname = ?", text).First(&nickname).Error
+	return
+}

@@ -6,45 +6,43 @@
     <title>名言BOT</title>
   </head>
   <body>
-    <div>
-      <a href="/">TOPへ</a>
-      <h1>{{ $character.Name }}</h1>
-      <h2>ニックネーム</h2>
-      <form action="/createnickname/{{.character.ID}}" method="post">
-        <input type="text" name="nickname" placeholder="新しいニックネーム">
-        <input type="submit" value="追加">
-      </form>
-      <table>
-        {{ range $character.Nicknames }}
-          <tr>
-            <td>{{ .Nickname }}</td>
-            <td>
-              {{ if ne $character.Name .Nickname }}
-                <form name="nickname{{ .ID }}" method="post" style="margin: 0;" action="/deletenickname/{{ .ID }}/{{ $character.ID }}">
-                  <input type="submit" value="削除">
-                </form>
-              {{ end }}
-             </td>
-          </tr>
-        {{ end }}
-      </table>
-      <h2>名言</h2>
-      <form action="/createmeigen/{{.character.ID}}" method="post">
-        <textarea name="text" placeholder="新しい名言"></textarea>
-        <input type="submit" value="追加">
-      </form>
-      <table>
-        {{ range .character.Meigens }}
-          <tr>
-            <td>{{ .Text }}</td>
-            <td>
-              <form name="meigen{{ .ID }}" method="post" style="margin: 0;" action="/deletemeigen/{{ .ID }}/{{ $character.ID }}">
+    <a href="/">TOPへ</a>
+    <h1>{{ $character.Name }}</h1>
+    <h2>ニックネーム</h2>
+    <form action="/createnickname/{{.character.ID}}" method="post">
+      <input type="text" name="nickname" placeholder="新しいニックネーム">
+      <input type="submit" value="追加">
+    </form>
+    <table>
+      {{ range $character.Nicknames }}
+        <tr>
+          <td>{{ .Nickname }}</td>
+          <td>
+            {{ if ne $character.Name .Nickname }}
+              <form name="nickname{{ .ID }}" method="post" style="margin: 0;" action="/deletenickname/{{ .ID }}/{{ $character.ID }}">
                 <input type="submit" value="削除">
               </form>
+            {{ end }}
             </td>
-          </tr>
-        {{ end }}
-      </table>
-    </div>
+        </tr>
+      {{ end }}
+    </table>
+    <h2>名言</h2>
+    <form action="/createmeigen/{{.character.ID}}" method="post">
+      <textarea name="text" placeholder="新しい名言"></textarea>
+      <input type="submit" value="追加">
+    </form>
+    <table>
+      {{ range .character.Meigens }}
+        <tr>
+          <td>{{ .Text }}</td>
+          <td>
+            <form name="meigen{{ .ID }}" method="post" style="margin: 0;" action="/deletemeigen/{{ .ID }}/{{ $character.ID }}">
+              <input type="submit" value="削除">
+            </form>
+          </td>
+        </tr>
+      {{ end }}
+    </table>
   </body>
 </html>

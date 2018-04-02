@@ -11,7 +11,7 @@ func main() {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 
-	r.POST("/callback", handler.CallbackHandler)
+	r.POST("/callback", handler.Callback)
 
 	r.LoadHTMLGlob("app/templates/*.tmpl")
 
@@ -28,6 +28,8 @@ func main() {
 
 	r.POST("/createmeigen/:character_id", handler.CreateMeigen)
 	r.POST("/deletemeigen/:meigen_id/:character_id", handler.DeleteMeigen)
+
+	r.GET("/checker", handler.ShowChecker)
 
 	r.Run(":8080")
 }
