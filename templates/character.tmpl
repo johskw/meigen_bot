@@ -20,9 +20,9 @@
             <td>{{ .Nickname }}</td>
             <td>
               {{ if ne $character.Name .Nickname }}
-                <form name="nickname{{ .ID }}" method="post" action="/deletenickname/{{ .ID }}/{{ $character.ID }}">
+                <form name="nickname{{ .ID }}" method="post" style="margin: 0;" action="/deletenickname/{{ .ID }}/{{ $character.ID }}">
                   <input type="submit" value="削除">
-               </form>
+                </form>
               {{ end }}
              </td>
           </tr>
@@ -37,7 +37,11 @@
         {{ range .character.Meigens }}
           <tr>
             <td>{{ .Text }}</td>
-            <td><a href="">削除</a></td>
+            <td>
+              <form name="meigen{{ .ID }}" method="post" style="margin: 0;" action="/deletemeigen/{{ .ID }}/{{ $character.ID }}">
+                <input type="submit" value="削除">
+              </form>
+            </td>
           </tr>
         {{ end }}
       </table>

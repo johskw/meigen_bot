@@ -20,7 +20,7 @@ func PostNickname(c *gin.Context) {
 	if err != nil {
 		log.Print(err)
 	}
-	c.Redirect(http.StatusMovedPermanently, "/characters/"+c.Param("character_id"))
+	c.Redirect(http.StatusMovedPermanently, "/character/"+c.Param("character_id"))
 }
 
 func DeleteNickname(c *gin.Context) {
@@ -29,5 +29,5 @@ func DeleteNickname(c *gin.Context) {
 	if err != nil {
 		log.Print(err)
 	}
-	c.Redirect(http.StatusMovedPermanently, "/characters/"+c.Param("character_id"))
+	c.Redirect(http.StatusMovedPermanently, "/character/"+c.Param("character_id"))
 }

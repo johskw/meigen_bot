@@ -20,5 +20,14 @@ func PostMeigen(c *gin.Context) {
 	if err != nil {
 		log.Print(err)
 	}
-	c.Redirect(http.StatusMovedPermanently, "/characters/"+c.Param("character_id"))
+	c.Redirect(http.StatusMovedPermanently, "/character/"+c.Param("character_id"))
+}
+
+func DeleteMeigen(c *gin.Context) {
+	meigenID, _ := strconv.Atoi(c.Param("meigen_id"))
+	err := model.DeteleMeigen(meigenID)
+	if err != nil {
+		log.Print(err)
+	}
+	c.Redirect(http.StatusMovedPermanently, "/character/"+c.Param("character_id"))
 }

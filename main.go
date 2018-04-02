@@ -15,7 +15,7 @@ func main() {
 
 	r.LoadHTMLGlob("templates/*.tmpl")
 	r.GET("/", handler.ShowIndex)
-	r.GET("/characters/:id", handler.ShowCharacter)
+	r.GET("/character/:id", handler.ShowCharacter)
 	r.GET("/newcharacter", handler.ShowCharacterForm)
 	r.POST("/createcharacter", handler.PostCharacter)
 
@@ -23,6 +23,7 @@ func main() {
 	r.POST("/deletenickname/:nickname_id/:character_id", handler.DeleteNickname)
 
 	r.POST("/createmeigen/:character_id", handler.PostMeigen)
+	r.POST("/deletemeigen/:meigen_id/:character_id", handler.DeleteMeigen)
 
 	r.Run(":8080")
 }
