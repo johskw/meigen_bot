@@ -9,7 +9,7 @@ import (
 	"github.com/johskw/meigen_bot/model"
 )
 
-func PostMeigen(c *gin.Context) {
+func CreateMeigen(c *gin.Context) {
 	var meigen model.Meigen
 	err := c.Bind(&meigen)
 	if err != nil {

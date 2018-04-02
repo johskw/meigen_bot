@@ -28,6 +28,11 @@ func (character Character) Create() (Character, error) {
 	return character, err
 }
 
+func (character Character) Update() (Character, error) {
+	err := db.Save(&character).Error
+	return character, err
+}
+
 func DeleteCharacter(id int) (err error) {
 	var character Character
 	err = db.First(&character, id).Related(&character.Nicknames).Related(&character.Meigens).Error

@@ -9,7 +9,7 @@ import (
 	"github.com/johskw/meigen_bot/model"
 )
 
-func PostNickname(c *gin.Context) {
+func CreateNickname(c *gin.Context) {
 	var nickname model.Nickname
 	err := c.Bind(&nickname)
 	if err != nil {

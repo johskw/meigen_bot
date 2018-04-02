@@ -15,6 +15,11 @@ func (nickname Nickname) Create() (Nickname, error) {
 	return nickname, err
 }
 
+func (nickname Nickname) Update() (Nickname, error) {
+	err := db.Save(&nickname).Error
+	return nickname, err
+}
+
 func DeteleNickname(id int) (err error) {
 	var nickname Nickname
 	err = db.First(&nickname, id).Error
