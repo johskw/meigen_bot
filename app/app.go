@@ -28,5 +28,8 @@ func init() {
 	r.POST("/createmeigen/:character_id", handler.CreateMeigen)
 	r.POST("/deletemeigen/:meigen_id/:character_id", handler.DeleteMeigen)
 
+	r.GET("/checker", handler.ShowChecker)
+	r.POST("/checker", handler.ShowResult)
+
 	http.Handle("/", r)
 }
