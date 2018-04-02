@@ -8,14 +8,14 @@ import (
 func GetMeigenFromNickname(text string) (meigenText string, err error) {
 	nickname, err := GetNickname(text)
 	if err != nil {
-		meigenText = "そのキャラクターにはまだ対応してないんだ...ゴメンね(> <)"
+		meigenText = "そのキャラクターにはまだ対応してないんだ...(> <)"
 		return
 	}
 	meigens, err := GetMeigens(nickname.CharacterID)
 	if err != nil {
 		return
 	} else if len(meigens) == 0 {
-		meigenText = "そのキャラクターにはまだ対応してないんだ...ゴメンね(> <)"
+		meigenText = "そのキャラクターにはまだ対応してないんだ...(> <)"
 		return
 	}
 	rand.Seed(time.Now().UnixNano())
