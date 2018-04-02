@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/johskw/meigen_bot/model"
 	"github.com/line/line-bot-sdk-go/linebot"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
@@ -28,7 +29,11 @@ func Callback(c *gin.Context) {
 		}
 		switch message := event.Message.(type) {
 		case *linebot.TextMessage:
-			_, err := bot.ReplyMessage(replyToken, linebot.NewTextMessage(message.Text)).Do()
+			meigenText, err := model.GetMeigenFromNickname(message.Text)
+			if err != nil {
+				log.Errorf(ctx, "Error: %v", err)
+			}
+			_, err = bot.ReplyMessage(replyToken, linebot.NewTextMessage(meigenText)).Do()
 			if err != nil {
 				log.Errorf(ctx, "Error: %v", err)
 			}
