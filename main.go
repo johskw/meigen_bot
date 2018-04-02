@@ -30,6 +30,7 @@ func main() {
 	r.POST("/deletemeigen/:meigen_id/:character_id", handler.DeleteMeigen)
 
 	r.GET("/checker", handler.ShowChecker)
+	r.GET("/result", handler.ShowResult)
 
 	r.Run(":8080")
 }
