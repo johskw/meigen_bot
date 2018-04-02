@@ -7,9 +7,10 @@
   <body>
     <a href="/">TOPへ</a>
     <h1>BOTチェッカー</h1>
-    <form action="/result" method="get">
-      <input type="text" name="nickname" placeholder="キャラクター名">
+    <form action="/checker" method="post">
+      <input type="text" name="nickname" placeholder="キャラクター名" value="{{ .nickname }}">
       <input type="submit" value="送信">
     </form>
+    <p>{{ .meigen }}</p>
   </body>
 </html>

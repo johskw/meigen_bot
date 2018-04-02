@@ -24,3 +24,8 @@ func DeteleMeigen(id int) (err error) {
 	err = db.Delete(&meigen).Error
 	return
 }
+
+func GetMeigens(characterID int) (meigens []Meigen, err error) {
+	err = db.Where("character_id = ?", characterID).Find(&meigens).Error
+	return
+}

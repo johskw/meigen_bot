@@ -51,5 +51,12 @@ func ShowChecker(c *gin.Context) {
 }
 
 func ShowResult(c *gin.Context) {
-	c.HTML(http.StatusOK, "result.tmpl", nil)
+	meigenText, err := model.GetMeigenFromNickname(c.PostForm("nickname"))
+	if err != nil {
+		log.Print(err)
+	}
+	c.HTML(http.StatusOK, "checker.tmpl", gin.H{
+		"nickname": c.PostForm("nickname"),
+		"meigen":   meigenText,
+	})
 }
