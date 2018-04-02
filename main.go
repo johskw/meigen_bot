@@ -18,6 +18,7 @@ func main() {
 	r.GET("/character/:id", handler.ShowCharacter)
 	r.GET("/newcharacter", handler.ShowCharacterForm)
 	r.POST("/createcharacter", handler.PostCharacter)
+	r.POST("/deletecharacter/:id", handler.DeteleCharacter)
 
 	r.POST("/createnickname/:character_id", handler.PostNickname)
 	r.POST("/deletenickname/:nickname_id/:character_id", handler.DeleteNickname)

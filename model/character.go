@@ -27,3 +27,28 @@ func (character Character) Create() (Character, error) {
 	err := db.Create(&character).Error
 	return character, err
 }
+
+func DeleteCharacter(id int) (err error) {
+	var character Character
+	err = db.First(&character, id).Related(&character.Nicknames).Related(&character.Meigens).Error
+	if err != nil {
+		return
+	}
+	tx := db.Begin()
+	err = tx.Delete(&character).Error
+	if err != nil {
+		tx.Rollback()
+		return
+	}
+	err = tx.Delete(Nickname{}, "character_id = ?", character.ID).Error
+	if err != nil {
+		tx.Rollback()
+		return
+	}
+	err = tx.Delete(Meigen{}, "character_id = ?", character.ID).Error
+	if err != nil {
+		tx.Rollback()
+		return
+	}
+	return tx.Commit().Error
+}
