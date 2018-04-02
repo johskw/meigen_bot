@@ -20,10 +20,6 @@ func ShowIndex(c *gin.Context) {
 	})
 }
 
-func ShowCharacterForm(c *gin.Context) {
-	c.HTML(http.StatusOK, "character_form.tmpl", nil)
-}
-
 func ShowCharacter(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	character, err := model.GetCharacter(id)
@@ -31,6 +27,21 @@ func ShowCharacter(c *gin.Context) {
 		log.Print(err)
 	}
 	c.HTML(http.StatusOK, "character.tmpl", gin.H{
+		"character": character,
+	})
+}
+
+func ShowNewCharacterForm(c *gin.Context) {
+	c.HTML(http.StatusOK, "new_character.tmpl", nil)
+}
+
+func ShowEditCharacterForm(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	character, err := model.GetCharacter(id)
+	if err != nil {
+		log.Print(err)
+	}
+	c.HTML(http.StatusOK, "edit_character.tmpl", gin.H{
 		"character": character,
 	})
 }

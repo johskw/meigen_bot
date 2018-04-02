@@ -13,6 +13,7 @@
           <tr>
             <td>{{ .Name }}</td>
             <td><a href="/character/{{ .ID }}">詳細</a></td>
+            <td><a href="/editcharacter/{{ .ID }}">編集</a></td>
             <td>
               <form name="character{{ .ID }}" method="post" style="margin: 0;" action="/deletecharacter/{{ .ID }}">
                 <input type="submit" value="削除">

@@ -16,8 +16,9 @@ func main() {
 	r.LoadHTMLGlob("templates/*.tmpl")
 	r.GET("/", handler.ShowIndex)
 	r.GET("/character/:id", handler.ShowCharacter)
-	r.GET("/newcharacter", handler.ShowCharacterForm)
+	r.GET("/newcharacter", handler.ShowNewCharacterForm)
 	r.POST("/createcharacter", handler.PostCharacter)
+	r.GET("/editcharacter/:id", handler.ShowEditCharacterForm)
 	r.POST("/deletecharacter/:id", handler.DeteleCharacter)
 
 	r.POST("/createnickname/:character_id", handler.PostNickname)
